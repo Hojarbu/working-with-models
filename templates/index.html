@@ -1,0 +1,10 @@
+{%extends "base.html"%}
+{% load static%}
+{% block content %}
+<h1>Tutorial 5</h1>
+<a href="google.com">google</a>
+<a href="https://www.google.com/">google2</a>
+<a href="{% url 'home-main'%}">home main</a>
+
+<img src="{%static 'img/dj.png' %}" alt="">
+{% endblock%}
