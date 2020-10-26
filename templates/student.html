@@ -2,7 +2,11 @@
 {% block content%}
 <ul>
     {% for item in students %}
-    <li>{{item.full_name}}, {{item.level}}, {{item.dob}}</li>
+    <li>
+        {% if item.photo%}
+        <img src="{{item.photo.url}}" alt="">
+        {%endif%}
+        {{item.id}} {{item.group.description}}, {{item.level}}, {{item.dob}}</li>
     {%endfor%}
     <h1>{{first_student}}</h1>
 </ul>

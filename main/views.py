@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from main.models import Student
+from main.models import Student, MainGroup
 
 
 def index(request):
@@ -22,8 +22,8 @@ def home(request):
 
 def student_list(request):
     students = Student.objects.all()
-    first_data = students.last()
+    # first_data = students.last()
 
-    context = {"students": students,
-               "first_student": first_data}
+    context = {"students": students
+               }
     return render(request, 'student.html', context)
