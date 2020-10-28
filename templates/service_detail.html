@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <title>{{object.name}}</title>
+    <p>{{object.description}}</p>
+    {% if object.image%}
+        <img src="{{object.image.url}}" alt="">
+    {%else%}
+    <p>No img</p>
+    {%endif%}
+</body>
+</html>

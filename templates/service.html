@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--    <ul>-->
+<!--        {%for item in object_list %}-->
+<!--        <li>{{item.name}} </li>-->
+<!--        {%endfor%}-->
+<!--    </ul>-->
+    <ul>
+        {%for item in services %}
+        <li><a href="{% url 'service_detail' item.pk %}">{{item.name}} </a> </li>
+        {%endfor%}
+    </ul>
+
+    <ul>
+        {%for item in students %}
+        <li>{{item.full_name}} </li>
+        {%endfor%}
+    </ul>
+</body>
+</html>

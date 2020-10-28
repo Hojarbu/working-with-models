@@ -1,5 +1,11 @@
 from django.db import models
 
+LEVEL = (
+    (1, "level 1"),
+    (2, "level 2"),
+    (3, "level 3"),
+    (4, "level 4")
+)
 
 # class TimeStamped(models.Model):
 #     created_at = models.DateTimeField(auto_now_add=True)
@@ -23,13 +29,6 @@ class MainGroup(models.Model):
 
 
 class Student(models.Model):
-    LEVEL = (
-        (1, "level 1"),
-        (2, "level 2"),
-        (3, "level 3"),
-        (4, "level 4")
-    )
-
     full_name = models.CharField(max_length=50)
     group = models.ForeignKey(MainGroup, on_delete=models.CASCADE, null=True)
     dob = models.DateField()
@@ -47,10 +46,25 @@ class Student(models.Model):
         return f'{self.full_name} {self.pk}'
 
 
-
-
 # class ProxyStudent(CustomModel):
 #
 #     def get_full_name(self):
 #         return self.full_name
+
+
+class Service(models.Model):
+    name = models.CharField(max_length=128)
+    description = models.TextField()
+    image = models.ImageField(null=True, blank=True)
+    order = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Xizmat turi'
+        verbose_name_plural = 'Xizmat turlari'
+
+
+    def __str__(self):
+        return f'{self.name} {self.pk}'
 

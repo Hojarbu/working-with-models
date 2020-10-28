@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views.generic import TemplateView, ListView, DetailView
 
-from main.models import Student, MainGroup
+from main.models import Student, MainGroup, Service
 
 
 def index(request):
@@ -21,9 +22,26 @@ def home(request):
 
 
 def student_list(request):
-    students = Student.objects.all()
+    students = Student.objects.order_by('order').filter(level=1)
     # first_data = students.last()
 
     context = {"students": students
                }
     return render(request, 'student.html', context)
+
+
+class ServiceList(ListView):
+    model = Service
+    template_name = "service.html"
+    context_object_name = 'service_list'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['students'] = Student.objects.all()
+        context['services'] = Service.objects.all()
+        return context
+
+
+class ServiceDetailView(DetailView):
+    model = Service
+    template_name = "service_detail.html"
