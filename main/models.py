@@ -46,12 +46,6 @@ class Student(models.Model):
         return f'{self.full_name} {self.pk}'
 
 
-# class ProxyStudent(CustomModel):
-#
-#     def get_full_name(self):
-#         return self.full_name
-
-
 class Service(models.Model):
     name = models.CharField(max_length=128)
     description = models.TextField()
@@ -64,7 +58,17 @@ class Service(models.Model):
         verbose_name = 'Xizmat turi'
         verbose_name_plural = 'Xizmat turlari'
 
-
     def __str__(self):
         return f'{self.name} {self.pk}'
 
+
+class Menu(models.Model):
+    name = models.CharField(max_length=128)
+    url = models.CharField(max_length=256)
+
+    class Meta:
+        verbose_name = 'Menyu'
+        verbose_name_plural = 'Menyular'
+
+    def __str__(self):
+        return f'{self.name} {self.pk}'

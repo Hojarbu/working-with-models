@@ -2,11 +2,12 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView
 
-from main.models import Student, MainGroup, Service
+from main.models import Student, MainGroup, Service, Menu
 
 
 def index(request):
-    return HttpResponse("Hello world")
+    menu = Menu.objects.all()
+    return HttpResponse("Hello world", {"menu":menu})
 
 
 def my_city(request, city):
@@ -26,6 +27,7 @@ def student_list(request):
     # first_data = students.last()
 
     context = {"students": students
+
                }
     return render(request, 'student.html', context)
 
